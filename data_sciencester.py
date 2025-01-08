@@ -56,14 +56,14 @@ def friends_of_friend_ids_bad(user):
             for friend in user["friends"] # for each of user's friends
             for foaf in friend["friends"]] # get each of _their_ friends
 
-print(friends_of_friend_ids_bad(users[0])) # [0, 2, 3, 0, 1, 3]
+# print(friends_of_friend_ids_bad(users[0])) # [0, 2, 3, 0, 1, 3]
 
 # frinend of user[0]
-print([friend["id"] for friend in users[0]["friends"]]) # [1, 2]
+# print([friend["id"] for friend in users[0]["friends"]]) # [1, 2]
 # friend of user[1]
-print([friend["id"] for friend in users[1]["friends"]]) # [0, 2, 3]
+# print([friend["id"] for friend in users[1]["friends"]]) # [0, 2, 3]
 # friend of user[2]
-print([friend["id"] for friend in users[2]["friends"]]) # [0, 1, 3]
+# print([friend["id"] for friend in users[2]["friends"]]) # [0, 1, 3]
 
 def not_the_same(user, other_user):
     """two users are not the same if they have different ids"""
@@ -82,9 +82,9 @@ def friends_of_friend_ids(user):
                    if not_the_same(user, foaf) # who aren't me
                    and not_friends(user, foaf)) # and aren't my friends
 
-print(friends_of_friend_ids(users[3])) # Counter({0: 2, 5: 1})
+# print(friends_of_friend_ids(users[3])) # Counter({0: 2, 5: 1})
 
-interest = [
+interests = [
     (0, "Hadoop"), (0, "Big Data"), (0, "HBase"), (0, "Java"),
     (0, "Spark"), (0, "Storm"), (0, "Cassandra"),
     (1, "NoSQL"), (1, "MongoDB"), (1, "Cassandra"), (1, "HBase"),
@@ -103,5 +103,30 @@ interest = [
 
 def data_scientists_who_like(target_interest):
     return [user_id
-            for user_id, user_interest in interest
+            for user_id, user_interest in interests
             if user_interest == target_interest]
+
+# print(data_scientists_who_like('Hadoop'))
+from collections import defaultdict
+
+# keys are interests, values are lists of user_ids with that interest
+user_ids_by_interest = defaultdict(list)
+
+for user_id, interest in interests:
+    user_ids_by_interest[interest].append(user_id)
+
+# print(user_ids_by_interest)
+
+# keys are user_ids, values are lists of interests for that user_id
+interests_by_user_id = defaultdict(list)
+
+for user_id, interest in interests:
+    interests_by_user_id[user_id].append(interest)
+
+def most_common_interests_with(user):
+    return Counter(interested_user_id
+                   for interest in interests_by_user_id[user["id"]]
+                   for interested_user_id in user_ids_by_interest[interest]
+                   if interested_user_id != user["id"])
+
+print(most_common_interests_with(users[0])) # Counter({9: 3, 1: 2, 8: 1, 5: 1})
