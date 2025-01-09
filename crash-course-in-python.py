@@ -54,3 +54,16 @@ from __future__ import division
 print(5/2) # 2.5
 # to get only the integer part of the division
 print(5//2) # 2
+
+# functions
+
+def double(x):
+    return x * 2
+
+# python functions are first class which means you can assign them to variables and pass them into functions just like any other arguments
+def apply_to_one(f):
+    return f(1)
+
+my_double = double # refers to the previously defined function
+x = apply_to_one(my_double) # 2
+print(x)
