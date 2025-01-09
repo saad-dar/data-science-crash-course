@@ -46,3 +46,11 @@ my_counter = Counter()
 match = 10
 from re import *
 print(match) # "<function re.match>" # above match value is replaced by re.match function
+
+# arithmetic operations
+
+from __future__ import division
+
+print(5/2) # 2.5
+# to get only the integer part of the division
+print(5//2) # 2
