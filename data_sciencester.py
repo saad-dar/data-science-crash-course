@@ -190,3 +190,15 @@ def predict_paid_or_unpaid(years_experience):
         return "unpaid"
     else:
         return "paid"
+    
+# print(predict_paid_or_unpaid(0.7)) # paid
+
+# topic of interest
+
+words_and_counts = Counter(word
+                            for user, interest in interests
+                            for word in interest.lower().split())
+
+for word, count in words_and_counts.most_common():
+    if count > 1:
+        print(word, count)
