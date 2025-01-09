@@ -129,4 +129,54 @@ def most_common_interests_with(user):
                    for interested_user_id in user_ids_by_interest[interest]
                    if interested_user_id != user["id"])
 
-print(most_common_interests_with(users[0])) # Counter({9: 3, 1: 2, 8: 1, 5: 1})
+# print(most_common_interests_with(users[0])) # Counter({9: 3, 1: 2, 8: 1, 5: 1})
+
+# salaries and experiences
+
+salaries_and_tenures = [(83000, 8.7), (88000, 8.1),
+                        (48000, 0.7), (76000, 6),
+                        (69000, 6.5), (76000, 7.5),
+                        (60000, 2.5), (83000, 10),
+                        (48000, 1.9), (63000, 4.2)]
+# keys are years, values are lists of the salaries for each tenure
+
+salary_by_tenure = defaultdict(list)
+
+for salary, tenure in salaries_and_tenures:
+    salary_by_tenure[tenure].append(salary)
+
+# keys are years, each value is average salary for that tenure
+average_salary_by_tenure = {
+    tenure: sum(salaries) / len(salaries)
+    for tenure, salaries in salary_by_tenure.items()
+}
+
+#print(average_salary_by_tenure)
+
+# it might be more high-level to bucket the tenures
+def tenure_bucket(tenure):
+    if tenure < 2:
+        return "less than two"
+    elif tenure < 5:
+        return "between two and five"
+    else:
+        return "more than five"
+
+# keys are tenure buckets, values are lists of salaries for that bucket
+
+salary_by_tenure_bucket = defaultdict(list)
+
+for salary, tenure in salaries_and_tenures:
+    bucket = tenure_bucket(tenure)
+    salary_by_tenure_bucket[bucket].append(salary)
+
+#print(salary_by_tenure_bucket) # defaultdict(<class 'list'>, {'more than five': [83000, 88000, 76000, 69000, 76000, 83000], 'less than two': [48000, 48000], 'between two and five': [60000, 63000]})
+
+# keys are tenure buckets, values are average salary for that bucket
+
+average_salary_by_bucket = {
+    tenure_bucket: sum(salaries) / len(salaries)
+    for tenure_bucket, salaries in salary_by_tenure_bucket.items()
+}
+
+# print(average_salary_by_bucket) # {'more than five': 79166.66666666667, 'less than two': 48000.0, 'between two and five': 61500.0}
