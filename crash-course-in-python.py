@@ -1,3 +1,4 @@
+from __future__ import division
 # white spaces formatting
 for i in [1, 2, 3, 4, 5]:
     print(i)
@@ -49,8 +50,6 @@ print(match) # "<function re.match>" # above match value is replaced by re.match
 
 # arithmetic operations
 
-from __future__ import division
-
 print(5/2) # 2.5
 # to get only the integer part of the division
 print(5//2) # 2
@@ -67,3 +66,24 @@ def apply_to_one(f):
 my_double = double # refers to the previously defined function
 x = apply_to_one(my_double) # 2
 print(x)
+
+# anonymous functions (lambda functions)
+y = apply_to_one(lambda x: x + 4) # 5
+
+another_double = lambda x: 2 * x # don't do this(not recomended)
+def another_double(x): return 2 * x # do this (recommended)
+
+# default arguments
+def my_print(message="my default message"):
+    print(message)
+
+my_print("hello") # hello
+my_print() # my default message
+
+# specifying arguments by name
+def subtract(a=0, b=0):
+    return a - b
+
+print(subtract(10, 5)) # 5
+print(subtract(0, 5)) # -5
+print(subtract(b=5)) # -5 # a is not specified
