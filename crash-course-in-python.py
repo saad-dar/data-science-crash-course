@@ -108,3 +108,10 @@ and this is the second line
 and this is the third line"""
 # prints with the new line characters
 print(multi_line_string)
+
+# exceptions
+
+try:
+    print(0 / 0)
+except ZeroDivisionError:
+    print("cannot divide by zero")
