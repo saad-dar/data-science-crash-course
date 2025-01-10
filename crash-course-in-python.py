@@ -84,6 +84,27 @@ my_print() # my default message
 def subtract(a=0, b=0):
     return a - b
 
-print(subtract(10, 5)) # 5
-print(subtract(0, 5)) # -5
-print(subtract(b=5)) # -5 # a is not specified
+#print(subtract(10, 5)) # 5
+#print(subtract(0, 5)) # -5
+#print(subtract(b=5)) # -5 # a is not specified
+
+# strings
+
+single_quoted_string = 'data science'
+double_quoted_string = "data science"
+
+tab_string = "\t" # represents the tab character
+print(len(tab_string)) # 1
+
+# raw strings with backslaches (useful when dealing with regular expressions)
+
+not_tab_string = r"\t" # represents the characters '\' and 't'
+print(len(not_tab_string)) # 2
+
+# multiline strings
+
+multi_line_string = """This is the first line.
+and this is the second line
+and this is the third line"""
+# prints with the new line characters
+print(multi_line_string)
