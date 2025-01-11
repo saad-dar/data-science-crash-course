@@ -319,3 +319,17 @@ dd_pair[2][1] = 1 # now dd_pair contains {2: [0, 1]}
 dd_pair[3][0] = 2 # now dd_pair contains {2: [0, 1], 3: [2, 0]}
 dd_pair[2][0] = 3 # now dd_pair contains {2: [3, 1], 3: [2, 0]}
 print(dd_pair)
+
+# Counter
+
+# counting words in a document using Counter
+
+c = Counter([0, 1, 2, 0]) # c is {0: 2, 1: 1, 2: 1}
+print(c)
+word_counts = {}
+word_counts = Counter(document)
+print(word_counts)
+
+# a Counter instance has a most_common method that is frequently useful
+for word, count in word_counts.most_common(3):
+    print(word, count)
