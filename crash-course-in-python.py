@@ -258,3 +258,64 @@ print(tweet_items[0])
 print("user" in tweet_keys) # True
 print("user" in tweet) # True
 print("joelgrus" in tweet_values) # True
+
+# defaultdict
+
+# counting words in document using a dictionary
+
+document = ["data", "science", "crash", "course", "data", "science", "beginner", "course"]
+word_counts = {}
+for word in document:
+    if word in word_counts:
+        word_counts[word] += 1
+    else:
+        word_counts[word] = 1
+
+print(word_counts)
+
+# using forgiveness is better than permission approach
+
+word_counts = {}
+#print(word_counts) # {}
+for word in document:
+    try:
+        word_counts[word] += 1
+    except KeyError:
+        word_counts[word] = 1
+
+print(word_counts)
+
+# using get method
+
+word_counts = {}
+print(word_counts) # {}
+for word in document:
+    previous_count = word_counts.get(word, 0)
+    word_counts[word] = previous_count + 1
+print(word_counts)
+
+# using defaultdict
+
+word_counts = defaultdict(int) # int() produces 0
+for word in document:
+    word_counts[word] += 1
+print(word_counts)
+# they can also be useful with list or dict or even your own functions
+
+dd_list = defaultdict(list) # list() produces an empty list
+dd_list[2].append(1) # now dd_list contains {2: [1]}
+dd_list[3].append(2) # now dd_list contains {2: [1], 3: [2]}
+print(dd_list)
+
+# using dict
+dd_dict = defaultdict(dict) # dict() produces an empty dict
+dd_dict["Joel"]["City"] = "Seattle" # {"Joel": {"City": "Seattle"}}
+dd_dict["Joel"]["State"] = "WA" # {"Joel": {"City": "Seattle", "State": "WA"}}
+print(dd_dict)
+
+#using lambda function
+dd_pair = defaultdict(lambda: [0, 0]) # [0, 0] is the default value
+dd_pair[2][1] = 1 # now dd_pair contains {2: [0, 1]}
+dd_pair[3][0] = 2 # now dd_pair contains {2: [0, 1], 3: [2, 0]}
+dd_pair[2][0] = 3 # now dd_pair contains {2: [3, 1], 3: [2, 0]}
+print(dd_pair)
