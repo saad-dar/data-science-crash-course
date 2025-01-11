@@ -368,3 +368,33 @@ item_set = set(item_list)
 num_distinct_item = len(item_set)
 distinct_item_list = list(item_set)
 print(item_list, num_items, item_set, num_distinct_item, distinct_item_list)
+
+# control flow
+
+if 1 > 2:
+    message = "if only 1 were greater than two..."
+elif 1 > 3:
+    message = "elif stands for 'else if'"
+else:
+    message = "when all else fails use else (if you want to)"
+
+x = 4
+parity = "even" if x % 2 == 0 else "old"
+print(parity)
+
+x = 0
+while x < 10:
+    print(x, "is less than 10")
+    x += 1
+
+# we use for and in together
+
+for x in range(10):
+    print(x, "is less than 10")
+
+for x in range(10):
+    if x == 3:
+        continue # go immediately to the next iteration
+    if x == 5:
+        break # quit the loop entirely
+    print(x)
