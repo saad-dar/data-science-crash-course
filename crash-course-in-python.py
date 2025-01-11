@@ -202,3 +202,59 @@ print(x, y)
 
 x, y = 1, 2 # x is 1, y is 2
 x, y = y, x # pythonic way to swap variables
+
+# dictionaries
+
+empty_dict = {} # pythonic
+empty_dict2 = dict() # less pythonic
+grades = {"Joel": 80, "Tim": 95} # dictionary literal
+joels_grade = grades["Joel"] # 80
+print(joels_grade)
+
+try:
+    kates_grade = grades["Kate"]
+except KeyError:
+    print("no grade for Kate!")
+
+# check for the existence of a key using in
+
+joel_has_grade = "Joel" in grades # True
+print(joel_has_grade)
+kate_has_grade = "Kate" in grades # False
+print(kate_has_grade)
+
+# get method that returns a default value (instead of raising an exception) when you look up a key that's not in the dictionary
+
+joels_grade = grades.get("Joal", 0) # 80
+kates_grade = grades.get("kate", 0) # 0
+no_ones_grade = grades.get("No One") # default is "None"
+print(joels_grade, kates_grade, no_ones_grade)
+
+# assignment using key value pairs
+
+grades["Tim"] = 99 # replaces the old value
+grades["Kate"] = 100 # adds a third entry
+num_students = len(grades) # 3
+print(grades, num_students)
+
+# dictionaries are used to represent structured data
+
+tweet = {
+    "user": "joelgrus",
+    "text": "Data Science is Awesome",
+    "retweet_count": 100,
+    "hashtags": ["#data", "#science", "#datascience", "#awesome", "#yolo"]
+}
+
+tweet_keys = tweet.keys() # list of keys
+tweet_values = tweet.values() # list of values
+tweet_items = tweet.items() # list(array) of (key, value) tuples
+
+print(tweet)
+print(tweet_keys)
+print(tweet_values)
+print(tweet_items[0])
+
+print("user" in tweet_keys) # True
+print("user" in tweet) # True
+print("joelgrus" in tweet_values) # True
