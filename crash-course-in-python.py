@@ -173,3 +173,32 @@ x, y = y, x # x is 2, y is 1
 
 # underscores can be used to assign values to unused variables
 _, y = [1, 2] # y is 2 and 1 will be ignored
+
+# tuples
+# tuples are the immutable cousins of the lists
+
+my_list = [1, 2]    # list
+my_tuple = (1, 2)   # tuple
+other_tuple = 3, 4  # tuple without the parentheses
+
+my_list[1] = 3 # my_list is now [1, 3]
+
+print(my_list)
+try:
+    my_tuple[1] = 3
+except TypeError:
+    print("cannot modify a tuple")
+
+# tuples are a convenient way to return multiple values from functions
+def sum_and_product(x, y):
+    return (x + y), (x * y)
+
+x, y = sum_and_product(2, 3) # x is 5, y is 6
+print(x, y)
+x, y = sum_and_product(5, 10) # x is 15, y is 50
+print(x, y)
+
+# tuples (and lists) can also be used for multiple assignment
+
+x, y = 1, 2 # x is 1, y is 2
+x, y = y, x # pythonic way to swap variables
