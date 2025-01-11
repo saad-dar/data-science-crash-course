@@ -333,3 +333,38 @@ print(word_counts)
 # a Counter instance has a most_common method that is frequently useful
 for word, count in word_counts.most_common(3):
     print(word, count)
+
+# Sets
+
+# represent a collection of distinct elements
+
+s = set()
+s.add(1) # s is {1}
+s.add(2) # s is {1, 2}
+s.add(2) # s is still {1, 2}
+s.add(3) # s is {1, 2, 3}
+print(s)
+x = len(s) # 3
+print(x)
+
+y = 2 in s # True
+z = 3 in s # True
+print(y, z)
+
+hundreds_of_other_words = []
+
+stopwords_list = ["a", "an", "at"] + hundreds_of_other_words + ["yet", "you"]
+
+"zip" in stopwords_list # False, but have to check every element
+
+stopwords = set(stopwords_list)
+"zip" in stopwords # very fast to check
+
+# find distinct items in a collection
+
+item_list = [1, 2, 3, 1, 2, 3]
+num_items = len(item_list)
+item_set = set(item_list)
+num_distinct_item = len(item_set)
+distinct_item_list = list(item_set)
+print(item_list, num_items, item_set, num_distinct_item, distinct_item_list)
