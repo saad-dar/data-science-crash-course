@@ -451,3 +451,22 @@ print(any([1,2,3, False])) # True, at least one element in iterable(list) is tru
 
 print(all([1,2,3, False])) # False, at least one element in iterable(list) is falsy
 print(any([False, ""])) # False, all elements in iterable(list) are falsy
+
+# Sorting
+
+# (sort or sorted) sort a list from smallest to largest 
+x = [4, 1, 2, 3]
+y = sorted(x) # y is [1, 2, 3, 4], x is unchanged
+x.sort() # now x is [1, 2, 3, 4]
+print(x, y)
+
+# sort the list from largest to smallest using the reverse argument
+# we can also provide a second argument to specify the sorting criteria
+
+# sort the list by the absolute value from largest to smallest
+x = sorted([-4, 1, -2, 3], key=abs, reverse=True) # is [-4, 3, -2, 1]
+print(x)
+
+# here we sort the list of words by their lengths from longest to shortest
+wc = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)
+print(wc)
