@@ -437,3 +437,17 @@ print(second_char)
 # when x is either a number or possibly None
 safe_x = x or 0
 print(safe_x)
+
+# any() and all() function python
+
+all([True, 1, {3}]) # True
+all([True, 1, {}]) # False, {} is falsy
+any([True, 1, {}]) # True, True is truthy
+print(all([])) # True, no falsy elements in the list
+print(any([])) # False, no truthy elements in the list
+
+print(all([1,2,3, True])) # True, all elements in iterable(list) are truthy
+print(any([1,2,3, False])) # True, at least one element in iterable(list) is truthy
+
+print(all([1,2,3, False])) # False, at least one element in iterable(list) is falsy
+print(any([False, ""])) # False, all elements in iterable(list) are falsy
