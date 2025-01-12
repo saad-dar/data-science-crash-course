@@ -398,3 +398,42 @@ for x in range(10):
     if x == 5:
         break # quit the loop entirely
     print(x)
+
+# Truthiness
+
+one_is_less_than_two = 1 < 2 # True
+true_equals_false = True == False # False
+print(one_is_less_than_two, true_equals_false)
+
+x = None # None is a special value similar to null in other languages
+print(x == None) # True, but not pythonic
+print(x is None) # True, pythonic
+
+# python lets you use any value where it expects a boolean
+# the following are all false
+print(bool(False)) # False
+print(bool(None)) # False
+print(bool([])) # False
+print(bool({})) # False
+print(bool("")) # False
+print(bool(set())) # False
+print(bool(0.0)) # False
+print(bool(0)) # False
+
+def some_function_that_returns_a_string():
+    return "string"
+
+s = some_function_that_returns_a_string()
+
+if s:
+    first_char = s[0]
+else:
+    first_char = ""
+
+print(first_char)
+second_char = s and s[1]
+print(second_char)
+
+# when x is either a number or possibly None
+safe_x = x or 0
+print(safe_x)
