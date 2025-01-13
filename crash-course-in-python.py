@@ -504,3 +504,44 @@ increasing_pairs = [(x, y) # only pairs with x < y]
                     for x in range(10) # range(lo, hi) equals [lo, lo + 1, ..., hi - 1]
                     for y in range(x + 1, 10)]
 print(increasing_pairs)
+
+# generator and iterators
+# a generator is something that you can iterate over (for us, usually using for) 
+# but whose values are produced only as needed (lazily)
+
+def lazy_range(n):
+    """a lazy version of range"""
+    i = 0
+    while i < n:
+        yield i
+        i += 1
+
+for i in lazy_range(10):
+    print(i)
+
+# python commes with lazy_range function called xrange
+# in python 3, range is a lazy_range
+# in python 2, range is not lazy
+# in python 3, range is xrange
+
+# infinite lazy_range generator
+def natural_numbers():
+    """returns 1, 2, 3, ..."""
+    n = 1
+    while True:
+        yield n
+        n += 1
+
+# natural_numbers() is a generator
+print('natural_numbers() is a generator')
+for i in natural_numbers():
+    print(i)
+    if i == 100:
+        break
+
+# another way to create generators is by using for comprehensions wrapped in parentheses
+
+lazy_evens_below_20 = (i for i in lazy_range(20) if i % 2 == 0)
+print(lazy_evens_below_20)
+for i in lazy_evens_below_20:
+    print(i)
