@@ -470,3 +470,37 @@ print(x)
 # here we sort the list of words by their lengths from longest to shortest
 wc = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)
 print(wc)
+
+# List comprehensions
+
+# we can use list comprehensions to transform or filter a list
+
+even_numbers = [x for x in range(5) if x % 2 == 0] # [0, 2, 4]
+print(even_numbers)
+squares = [x * x for x in range(5)] # [0, 1, 4, 9, 16]
+print(squares)
+even_squares = [x * x for x in even_numbers] # [0, 4, 16]
+print(even_squares)
+
+# you can turn lists into dictionaries or sets
+square_dict = {x: x * x for x in range(5)} # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+print(square_dict)
+square_set = {x * x for x in [1, -1]} # {1}
+print(square_set)
+
+# if you don't need the value from the list, it's common to use an underscore as the variable
+
+zeroes = [0 for _ in even_numbers] # has the same length as even_numbers
+print(zeroes)
+
+# a list comprehension can include multiple fors and later fors can use the results of earlier ones
+pairs = [(x, y)
+            for x in range(10)
+            for y in range(10)] # 100 pairs (0,0) (0,1) ... (9,8), (9,9)
+
+print(pairs)
+
+increasing_pairs = [(x, y) # only pairs with x < y]
+                    for x in range(10) # range(lo, hi) equals [lo, lo + 1, ..., hi - 1]
+                    for y in range(x + 1, 10)]
+print(increasing_pairs)
