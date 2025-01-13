@@ -1,5 +1,6 @@
 from __future__ import division
 import random
+import re
 # white spaces formatting
 for i in [1, 2, 3, 4, 5]:
     print(i)
@@ -585,3 +586,14 @@ print(winning_numbers)
 
 four_with_replacement = [random.choice(range(10)) for _ in range(4)]
 print(four_with_replacement)
+
+
+# regular expressions
+
+print(all([
+    not re.match("a", "cat"), # cat does not start with a
+    re.search("a", "cat"), # cat has an a in it
+    not re.search("c", "dog"), # dog does not have a c in it
+    3 == len(re.split("[ab]", "carbs")), # split on a or b to ['c', 'r', 's']
+    "R-D-" == re.sub("[0-9]", "-", "R2D2") # replace digits with dashes
+])) # prints True
