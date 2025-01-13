@@ -597,3 +597,53 @@ print(all([
     3 == len(re.split("[ab]", "carbs")), # split on a or b to ['c', 'r', 's']
     "R-D-" == re.sub("[0-9]", "-", "R2D2") # replace digits with dashes
 ])) # prints True
+
+# object oriented programming
+
+# python objects can have methods (functions associated with them)
+# python objects can have attributes (other objects associated with them)
+
+# define Set class with two methods
+
+class Set:
+    # these are the member functions
+    # every one takes a first parameter "self" (another convention)
+    # that refers to the particular Set object being used
+
+    def __init__(self, values=None):
+        """this is the constructor
+        it gets called when you create a new Set
+        you would use it like
+        s1 = Set() # empty set
+        s2 = Set([1, 2, 2, 3]) # initialize with values"""
+        self.dict = {} # each instance of Set has its own dict property
+        # which is what we'll use to track memberships
+        if values is not None:
+            for value in values:
+                self.add(value)
+
+    def __repr__(self):
+        """this is the string representation of a Set object
+        if you type it at the python prompt or pass it to str()"""
+        return "Set: " + str(self.dict.keys())
+
+    # we'll represent membership by being a key in self.dict with value True
+    def add(self, value):
+        self.dict[value] = True
+
+    # value is in the Set if it's a key in the dictionary
+    def contains(self, value):
+        return value in self.dict
+
+    def remove(self, value):
+        del self.dict[value]
+
+s = Set([1, 2, 3])
+print(s)
+s.add(4)
+print(s)
+print(s.contains(4)) # True
+s.remove(3)
+print(s)
+print(s.contains(3))  # False
+print(s.__repr__()) # Set: [1, 2, 4] (string)
