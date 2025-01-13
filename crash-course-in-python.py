@@ -1,4 +1,5 @@
 from __future__ import division
+import random
 # white spaces formatting
 for i in [1, 2, 3, 4, 5]:
     print(i)
@@ -545,3 +546,42 @@ lazy_evens_below_20 = (i for i in lazy_range(20) if i % 2 == 0)
 print(lazy_evens_below_20)
 for i in lazy_evens_below_20:
     print(i)
+
+# random module
+
+four_uniform_ramdoms = [random.random() for _ in range(4)]
+
+print(four_uniform_ramdoms)
+# these random numbers are actually pseudorandom
+# they are deterministic based on the initial state of the generator
+# we can set the initial state using random.seed
+
+random.seed(10) # set the seed to 10
+print(random.random()) # 0.5714025946899135
+random.seed(10) # reset the seed to 10
+print(random.random()) # 0.5714025946899135
+
+# random module also includes functions to get random integers, 
+# choose randomly from a list, shuffle a list, and more like randrange(), choice(), shuffle()
+
+print(random.randrange(10)) # choose randomly from range(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(random.randrange(3, 6)) # choose randomly from range(3, 6) = [3, 4, 5]
+
+# randomly reorder a list using shuffle()
+up_to_ten = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+random.shuffle(up_to_ten)
+print(up_to_ten)
+
+# randomly pick one element from a list using choice()
+my_best_friend = random.choice(["Alice", "Bob", "Charlie"])
+print(my_best_friend)
+
+# randomly choose a sample of elements without replacement(without duplicates) using sample()
+lottery_numbers = range(60)
+winning_numbers = random.sample(lottery_numbers, 6)
+print(winning_numbers)
+
+# choose sample of elements from list with replacement (duplicates) using choice()
+
+four_with_replacement = [random.choice(range(10)) for _ in range(4)]
+print(four_with_replacement)
